@@ -1,0 +1,16 @@
+{
+  "name": "ember-canvas-drawing-editor",
+  "description": "A Canvas Drawing Editor tool in Ember",
+  "main": "",
+  "authors": [
+    "Aswin Vijayakumar"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "ember": "git://github.com/components/ember.git#^2.18.2",
+    "ember-cli-shims": "^1.2.0",
+    "loader.js": "^4.7.0"
+  }
+}
