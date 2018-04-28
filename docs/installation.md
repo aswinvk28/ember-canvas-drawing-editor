@@ -8,3 +8,6 @@ cd /path/to/repo
 npm install
 bower install
 
+Installing all packages in Node
+-------------------------------
+npm install --GTK_Root="" --jpeg_root=""
