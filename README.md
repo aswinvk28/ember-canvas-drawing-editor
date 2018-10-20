@@ -1,1 +1,1 @@
-# ember-socket-adapter
+# ember-canvas-drawing-editor
