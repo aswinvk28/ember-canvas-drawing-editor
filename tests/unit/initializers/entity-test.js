@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { initialize } from 'ember-canvas-drawing-editor/initializers/entity';
+import { initialize } from 'ember-canvas-drawing-editor/initializers/registry';
 import { module, test } from 'qunit';
 import destroyApp from '../../helpers/destroy-app';
 
