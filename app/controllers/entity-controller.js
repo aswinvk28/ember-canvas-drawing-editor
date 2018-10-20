@@ -34,12 +34,14 @@ export const DefaultController = Ember.Controller.extend({
   /**
    * Response handler
    * @param {EventEmitter} socket
+   * @param {String} command
    * @param {Object} data
    */
-  handleResponse(socket, data) {
+  handleResponse(socket, command, data) {
     // implementation
-    
-    this.get('adapter').apply(this, arguments);
+    let response = this.get('adapter').handleResponse.apply(this, arguments);
+    // each subscriber gets and sets relevant variables
+    this.get('subscriber').trigger(command, socket, data);
   },
 
   /**
@@ -51,10 +53,10 @@ export const DefaultController = Ember.Controller.extend({
    */
   handleError(socket, requestData, errorObject, errorClass) {
     let error = this._errorHandler(errorObject);
-    let adapterError = this.get('adapter').apply(this, arguments);
+    let adapterError = this.get('adapter').handleError.apply(this, arguments);
     if(error.errors.length > 0) {
-      return error.errors[error.errors.length - 1];
+      return error;
     }
-    return adapterError.errors[adapterError.errors.length - 1];
+    return adapterError;
   },
 });

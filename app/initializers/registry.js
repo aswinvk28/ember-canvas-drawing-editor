@@ -18,7 +18,7 @@ const EntityRegister = EmberObject.extend({
    * @param {String} command
    */
   getController(command) {
-    [operation, type] = this._resolveCommand(command);
+    let {operation, type} = this._resolveCommand(command);
     var controllerName = (type + "Controller").capitalize();
     if(Controller.hasOwnProperty(controllerName)) {
       return Controller[controllerName];
@@ -28,8 +28,11 @@ const EntityRegister = EmberObject.extend({
 });
 
 export function initialize(application) {
-  application.register('controller:entity', EntityRegister);
-  application.inject('adapter', 'registry', 'controller:entity');
+  application.register('registry:entity', EntityRegister);
+  application.inject('adapter', 'registry', 'registry:entity');
 }
 
-export default { initialize };
+export default { 
+  name: 'registry',
+  initialize: initialize
+};

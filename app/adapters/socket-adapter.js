@@ -31,8 +31,10 @@ const SocketAdapter = DS.Adapter.extend({
    * @param {Object} options
    */
   _bindRequestToSocket(socket, options) {
+    if(!options.hasOwnProperty("requestData")) {
+      options['requestData'] = null;
+    }
     let { command } = options;
-    delete options['command'];
     let controller = this.getController(command);
     options['controller'] = controller;
     
@@ -407,7 +409,7 @@ function socketError(socket, options) {
  */
 function socketSuccess(socket, options) {
   let adapter = this;
-  let { requestData, controller, resolve } = options;
+  let { requestData, controller, resolve, command } = options;
   return function(data) {
     let response;
     try {
